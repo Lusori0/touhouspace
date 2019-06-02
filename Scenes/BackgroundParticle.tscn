@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/backgroundparticle.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+
+var speed = 0.3
+var opacity = 0.7
+var scaling = 0.3
+
+var widthb = 80
+var heightb = 45
+
+
+	
+
+func _ready():
+	widthb = get_viewport_rect().size.x/2
+	heightb = get_viewport_rect().size.y/2
+	
+	position.x = randi() % int(widthb*2) - 70
+	position.y = randi() % int(heightb*2) - 35
+	
+	set_modulate(Color(1.0,1.0,1.0,opacity))
+	set_scale(Vector2(scaling, scaling))
+
+func _process(delta):
+	if position.x < -widthb:
+		position.x = randi() %  int(widthb*2) + widthb
+		position.y = randi() %  int(heightb*2) - heightb
+	position.x -= speed
+	"
+
+[node name="Sprite" type="Sprite"]
+scale = Vector2( 0.52, 0.52 )
+texture = ExtResource( 1 )
+script = SubResource( 1 )

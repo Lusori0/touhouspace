@@ -1,0 +1,155 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Fonts/Coolvetica.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/buttons/play/buttonhover.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/buttons/buttonpressed.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/buttons/play/buttonnormal.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/buttons/shop/buttonhover.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/buttons/shop/button.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/buttons/exit/buttonhover.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/buttons/exit/button.png" type="Texture" id=8]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Label
+
+func _ready():
+	add_color_override(\"font_color_shadow\", global.backgroundColor)"
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+func _pressed():
+	global._ready()
+	get_tree().change_scene(\"res://scenes/Game.tscn\")"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Label
+
+func _ready():
+	set_text(str(safegame.points) + \"$\")
+	print(safegame.points)"
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Button
+
+func _pressed():
+	get_tree().change_scene(\"res://scenes/shop.tscn\")"
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 600, 125 )
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Button
+
+func _pressed():
+	get_tree().quit()"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -79.7622
+margin_top = -45.0
+margin_right = -79.7622
+margin_bottom = -45.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 80, 45 )
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -46.7378
+margin_top = 8.0
+margin_right = 46.2622
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.662745, 0, 1, 1 )
+text = "touhou space"
+script = SubResource( 1 )
+
+[node name="start" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -105.0
+margin_top = -5.45972
+margin_right = -6.00002
+margin_bottom = 15.5403
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+script = SubResource( 5 )
+
+[node name="Points" type="Label" parent="."]
+visible = false
+margin_left = 132.86
+margin_top = 77.5674
+margin_right = 168.86
+margin_bottom = 98.5674
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "100P"
+script = SubResource( 6 )
+
+[node name="shop" type="Button" parent="."]
+margin_left = 55.2366
+margin_top = 55.0358
+margin_right = 154.237
+margin_bottom = 76.0358
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+script = SubResource( 10 )
+
+[node name="exit" type="Button" parent="."]
+margin_left = 55.3321
+margin_top = 71.3147
+margin_right = 154.332
+margin_bottom = 91.3147
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+script = SubResource( 14 )
