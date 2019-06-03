@@ -6,6 +6,7 @@
 script/source = "extends Area2D
 
 var velocity = Vector2(-1.5,0)
+var acceleration = 1
 
 var widthb = 80
 var heightb = 45
@@ -19,10 +20,10 @@ func _ready():
 	size = int($CollisionShape2D.shape.radius)
 	
 	set_scale(Vector2(0.2,0.2))
-	set_position(Vector2(74,0))
 
 
 func _process(delta):
+	velocity = velocity * acceleration
 	position += velocity
 	if position.x < -widthb - size or position.x > widthb + size or heightb + size < position.y or position.y < -heightb - size: 
 		queue_free()

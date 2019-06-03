@@ -70,7 +70,6 @@ __meta__ = {
 }
 
 [node name="Player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0.0510464, 0 )
 scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 2 )

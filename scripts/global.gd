@@ -4,6 +4,7 @@ var lifetotal
 var life
 var playerspeed = 0.75
 var damage
+var playerPosition = Vector2(0,0)
 
 var backgroundColor
 var paused = false
