@@ -87,12 +87,16 @@ func _on_EnemyShootTimer_timeout():
 			if bulletamount == 0:
 				var rand1 = randi() % 2
 				var rand2 = randi() % 2
+				var positionaddX = 0
+				var positionaddY = 0
 				if rand1 == 0:
 					rand1 = -1
 				if rand2 == 0:
-					rand2 = -1
+					positionaddX = 20 * rand1
+				else:
+					positionaddY = 20 * rand1
 				
-				spawnlocation = Vector2(global.playerPosition.x + (randi() % 20 + 5) * rand1, global.playerPosition.y + (randi() % 20 + 5) * rand2)
+				spawnlocation = Vector2(global.playerPosition.x + positionaddX, global.playerPosition.y + positionaddY)
 			
 			bulletamount += 1
 			
@@ -100,25 +104,25 @@ func _on_EnemyShootTimer_timeout():
 				var projectile = Projectile.instance()
 				projectile.velocity = Vector2(0,0.1)
 				projectile.set_position(spawnlocation)
-				projectile.acceleration = 1.1
+				projectile.acceleration = 1.08
 				get_parent().add_child(projectile)
 				
 				var projectile2 = Projectile.instance()
 				projectile2.velocity = Vector2(0,-0.1)
 				projectile2.set_position(spawnlocation)
-				projectile2.acceleration = 1.1
+				projectile2.acceleration = 1.08
 				get_parent().add_child(projectile2)
 				
 				var projectile3 = Projectile.instance()
 				projectile3.velocity = Vector2(0.1,0)
 				projectile3.set_position(spawnlocation)
-				projectile3.acceleration = 1.1
+				projectile3.acceleration = 1.08
 				get_parent().add_child(projectile3)
 				
 				var projectile4 = Projectile.instance()
 				projectile4.velocity = Vector2(-0.1,0)
 				projectile4.set_position(spawnlocation)
-				projectile4.acceleration =1.1
+				projectile4.acceleration =1.08
 				get_parent().add_child(projectile4)
 			
 #		elif pattern == 3:

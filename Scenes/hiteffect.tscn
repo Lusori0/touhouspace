@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/hiteffect.gd" type="Script" id=1]
+[ext_resource path="res://scripts/hiteffectparticle.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="rect1" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 2 )
+
+[node name="rect2" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 2 )
+
+[node name="rect3" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 2 )
