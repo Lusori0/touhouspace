@@ -36,6 +36,7 @@ func _physics_process(delta):
 	
 	move_and_collide(velocity)
 	global.playerPosition = get_position()
+	global.playerVelocity = velocity
 	
 	if position.y < -heightb + playerHeight/2:
 		set_position(Vector2(position.x, -heightb + playerHeight/2))

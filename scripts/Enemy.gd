@@ -7,8 +7,10 @@ var rotationspeed = 0
 var bulletamount = 0
 var spawnlocation = Vector2(0,0)
 var playerPosition = Vector2(0,0)
+var playerVector
+var playerVectorLength
 
-var pattern = randi() % 4
+var pattern = 4# randi() % 5
 
 func _ready():
 	$startTimer.start()
@@ -24,7 +26,7 @@ func _on_changePattern_timeout():
 	shooting = false
 	$startTimer.start()
 	$EnemyShootTimer.stop()
-	pattern = randi() % 4
+	pattern = randi() % 5
 
 func _on_helptimer_timeout():
 	bulletamount = 0
@@ -98,6 +100,7 @@ func patternthree():
 func patternfour():
 	rotationspeed = 0
 	$EnemyShootTimer.set_wait_time(0.1)
+	$helptimer.set_wait_time(1.25)
 	if bulletamount == 0:
 		var rand1 = randi() % 2
 		var rand2 = randi() % 2
@@ -138,8 +141,10 @@ func patternfour():
 
 
 func patternfive():
+	$helptimer.set_wait_time(0.5)
 	if bulletamount == 0:
-		playerPosition = global.playerPosition
+		playerVector = Vector2(global.playerPosition.x - 74, global.playerPosition.y + global.playerVelocity.y *5)
+		playerVectorLength = sqrt(playerVector.x * playerVector.x + playerVector.y * playerVector.y)
 	bulletamount += 1
 	if bulletamount < 10:
 		rotationspeed = 0
@@ -147,7 +152,7 @@ func patternfive():
 		$EnemyShootTimer.set_wait_time(0.01)
 		var projectile = Projectile.instance()
 		projectile.set_position(Vector2(74,0))
-		projectile.velocity = Vector2(playerPosition.x / 20, playerPosition.y / 20)
+		projectile.velocity = Vector2(playerVector.x / playerVectorLength * 2.4, playerVector.y / playerVectorLength * 2.4)
 		get_parent().add_child(projectile)
 
 
