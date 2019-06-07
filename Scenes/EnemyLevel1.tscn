@@ -12,6 +12,7 @@ func _process(delta):
 "
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 8.46198
 
 [node name="enemy" type="Node2D"]
 
@@ -44,6 +45,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 0.0986556 )
 shape = SubResource( 2 )
 [connection signal="timeout" from="shooting/startTimer" to="shooting" method="_on_startTimer_timeout"]
 [connection signal="timeout" from="shooting/EnemyShootTimer" to="shooting" method="_on_EnemyShootTimer_timeout"]
